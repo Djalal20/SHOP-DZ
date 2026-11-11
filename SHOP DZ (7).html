@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SHOP DZ</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f8f7;--card:#fff;--ink:#12302f;--mute:#5b7473;--pri:#0f766e;--pri2:#0b4f5c;--line:#d6e5e3;--bad:#b42318;--ok:#16794a;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c1a19;--card:#13292a;--ink:#e6f2f0;--mute:#93b0ad;--line:#244241;--pri:#2cb3a6;--pri2:#2cb3a6}}
+:root[data-theme="dark"]{--bg:#0c1a19;--card:#13292a;--ink:#e6f2f0;--mute:#93b0ad;--line:#244241;--pri:#2cb3a6;--pri2:#2cb3a6}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Cairo,system-ui,sans-serif;line-height:1.5}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--pri2);color:#fff;display:flex;align-items:center;gap:8px;padding:10px 14px}
+header h1{margin:0;font-size:1.3rem;font-weight:800;flex:1}
+button,input,select{font:inherit}
+.b{border:0;border-radius:10px;padding:8px 14px;background:var(--pri);color:#fff;cursor:pointer;font-weight:600}
+.b.g{background:transparent;color:inherit;border:1px solid currentColor}
+.b.r{background:var(--bad)}.b:disabled{opacity:.5;cursor:not-allowed}
+header .b{background:rgba(255,255,255,.16)}
+:focus-visible{outline:3px solid #ffb703;outline-offset:2px}
+main{max-width:1000px;margin:0 auto;padding:14px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+input,select{padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);width:100%}
+.bar input{flex:1;min-width:160px}.bar select{width:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.p{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.p .im{aspect-ratio:1;background:var(--bg);display:grid;place-items:center;color:var(--mute);position:relative}
+.p img{width:100%;height:100%;object-fit:contain}
+.p .t{padding:10px;display:flex;flex-direction:column;gap:4px;flex:1}
+.pr{font-weight:800;color:var(--pri)}
+.tag{position:absolute;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.45);color:#fff;font-weight:800;font-size:1.6rem}.tag span{background:var(--bad);padding:4px 20px;border-radius:10px;transform:rotate(-8deg)}.p:has(.tag) img{filter:grayscale(1)}
+.empty{text-align:center;color:var(--mute);padding:40px 10px}
+.drawer{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9;display:none}
+.drawer.on{display:block}
+.sheet{position:absolute;inset-block:0;inset-inline-end:0;width:min(420px,100%);background:var(--card);padding:16px;overflow:auto;display:flex;flex-direction:column;gap:10px;padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+.row{display:flex;align-items:center;gap:8px;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line)}
+.q{display:flex;align-items:center;gap:6px}.q button{width:28px;height:28px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.tabs{display:flex;gap:6px;margin-bottom:12px;overflow-x:auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:10px}
+.f{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.st{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:12px}
+.st div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}.st b{display:block;font-size:1.3rem;color:var(--pri)}
+.sm{color:var(--mute);font-size:.9rem}
+.ad{display:grid;grid-template-columns:190px 1fr;gap:14px;align-items:start}
+.side{position:sticky;top:70px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px;display:flex;flex-direction:column;gap:4px}
+.nv{border:0;background:transparent;color:var(--ink);text-align:start;padding:10px 12px;border-radius:10px;cursor:pointer;display:flex;gap:8px;align-items:center;font-weight:600}
+.nv:hover{background:var(--bg)}.nv.on{background:var(--pri);color:#fff}.nv .bd{margin-inline-start:auto}
+.bd{background:var(--bad);color:#fff;border-radius:999px;padding:0 9px;font-size:.8rem;font-weight:600}
+.s-prep{background:#b7791f}.s-ship{background:#2563eb}.s-done{background:var(--ok)}.s-cancel{background:#6b7280}
+.ch{display:flex;gap:8px;align-items:flex-end;height:130px;margin-top:10px}.ch div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;font-size:.75rem;color:var(--mute)}.ch i{width:100%;background:var(--pri);border-radius:6px 6px 0 0;min-height:2px;display:block}
+.st b{font-size:1.5rem}.st div{border-top:4px solid var(--pri)}
+.card a{color:var(--pri)}
+@media(max-width:700px){.ad{grid-template-columns:1fr}.side{position:static;flex-direction:row;overflow-x:auto}.nv{white-space:nowrap}}
+#msg{position:fixed;bottom:calc(16px + env(safe-area-inset-bottom,0px));inset-inline:16px;margin:auto;max-width:360px;background:var(--ink);color:var(--bg);padding:10px 14px;border-radius:12px;text-align:center;display:none;z-index:20}
+@media (prefers-reduced-motion:no-preference){.drawer.on .sheet{animation:s .2s ease-out}@keyframes s{from{transform:translateX(30px);opacity:0}}}
+</style>
+</head>
+<body>
+<header>
+<h1>SHOP DZ</h1>
+<button class="b" id="lang"></button>
+<button class="b" id="adm" hidden></button>
+<button class="b" id="cartb"></button>
+</header>
+<main id="app"></main>
+<div class="drawer" id="dr"><div class="sheet" id="sh"></div></div>
+<div id="msg" role="status"></div>
+<script>
+const T={ar:{pw:"كلمة السر",setpw:"أنشئ كلمة سر للإدارة",enter:"دخول",bad:"كلمة السر خاطئة",lo:"خروج",chpw:"تغيير كلمة السر",newpw:"كلمة السر الجديدة",qty:"الكمية المشتراة",bought:"إجمالي المشتريات",net:"الصافي بعد المصاريف",exp:"المصاريف اليومية",amt:"المبلغ",note:"البيان",addexp:"إضافة مصروف",rm:"إزالة",search:"ابحث عن منتج…",all:"كل الفئات",add:"أضف إلى السلة",out:"نفد",cart:"السلة",empty:"لا توجد منتجات بعد.",cempty:"سلتك فارغة.",name:"الاسم الكامل",phone:"رقم الهاتف",wil:"الولاية",order:"تأكيد الطلب",total:"المجموع",da:"دج",ok:"تم إرسال طلبك. سنتصل بك قريبا.",store:"المتجر",admin:"الإدارة",prods:"المنتجات",orders:"الطلبات",stats:"الإحصائيات",pn:"اسم المنتج",cat:"الفئة",buy:"سعر الشراء",sell:"سعر البيع",stock:"متوفر",img:"صورة المنتج",save:"حفظ المنتج",del:"حذف",sold:"المبيعات المستلمة",profit:"الربح",cnt:"عدد الطلبات",clients:"أفضل الزبائن",wa:"رقم واتساب (مع رمز الدولة)",wab:"حفظ الرقم",st:{prep:"قيد التحضير",ship:"قيد التوصيل",done:"تم الاستلام",cancel:"ملغاة"},need:"أكمل الاسم والهاتف والولاية",noord:"لا توجد طلبات.",login:"سجّل الدخول لإدارة المتجر",offline:"وضع تجريبي: البيانات غير محفوظة.",wsend:"أرسل عبر واتساب",toggle:"نفد/متوفر"},
+fr:{pw:"Mot de passe",setpw:"Créez un mot de passe admin",enter:"Entrer",bad:"Mot de passe incorrect",lo:"Déconnexion",chpw:"Changer le mot de passe",newpw:"Nouveau mot de passe",qty:"Quantité achetée",bought:"Total des achats",net:"Net après dépenses",exp:"Dépenses quotidiennes",amt:"Montant",note:"Libellé",addexp:"Ajouter une dépense",rm:"Retirer",search:"Rechercher un produit…",all:"Toutes catégories",add:"Ajouter au panier",out:"Épuisé",cart:"Panier",empty:"Aucun produit pour le moment.",cempty:"Votre panier est vide.",name:"Nom complet",phone:"Téléphone",wil:"Wilaya",order:"Confirmer la commande",total:"Total",da:"DA",ok:"Commande envoyée. Nous vous appellerons bientôt.",store:"Boutique",admin:"Admin",prods:"Produits",orders:"Commandes",stats:"Statistiques",pn:"Nom du produit",cat:"Catégorie",buy:"Prix d'achat",sell:"Prix de vente",stock:"En stock",img:"Photo du produit",save:"Enregistrer",del:"Supprimer",sold:"Ventes reçues",profit:"Bénéfice",cnt:"Commandes",clients:"Meilleurs clients",wa:"Numéro WhatsApp (avec indicatif)",wab:"Enregistrer",st:{prep:"En préparation",ship:"En livraison",done:"Reçue",cancel:"Annulée"},need:"Renseignez nom, téléphone et wilaya",noord:"Aucune commande.",login:"Connectez-vous pour gérer la boutique",offline:"Mode démo : données non enregistrées.",wsend:"Envoyer via WhatsApp",toggle:"Épuisé/Dispo"}};
+let L=localStorage.getItem?.("l")||"ar";try{L=localStorage.getItem("l")||"ar"}catch(e){}
+const S={prods:[],orders:[],cart:{},q:"",cat:"",view:"shop",tab:"stats",admin:false,db:null,wa:"",ready:false,h:"",exp:[]};
+async function H(x){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("shopdz:"+x));return[...new Uint8Array(b)].map(v=>v.toString(16).padStart(2,"0")).join("")}
+const isUn=()=>{try{return !!S.h&&localStorage.getItem("au")===S.h}catch(e){return false}};
+const loginHTML=()=>`<div class="card" style="max-width:360px;margin:30px auto"><b>${S.h?t("pw"):t("setpw")}</b><p><input id="lp" type="password" placeholder="${t("pw")}"></p><button class="b" id="lg">${t("enter")}</button></div>`;
+const $=s=>document.querySelector(s),t=k=>T[L][k],esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=n=>Number(n||0).toLocaleString(L==="ar"?"ar-DZ":"fr-DZ")+" "+t("da");
+function toast(m){const e=$("#msg");e.textContent=m;e.style.display="block";clearTimeout(toast.x);toast.x=setTimeout(()=>e.style.display="none",3000)}
+function setLang(){document.documentElement.lang=L;document.documentElement.dir=L==="ar"?"rtl":"ltr";try{localStorage.setItem("l",L)}catch(e){}}
+$("#lang").onclick=()=>{L=L==="ar"?"fr":"ar";setLang();draw()};
+$("#adm").onclick=()=>{S.view=S.view==="shop"?"admin":"shop";draw()};
+$("#cartb").onclick=()=>openCart();
+$("#dr").onclick=e=>{if(e.target.id==="dr")closeD()};
+function closeD(){$("#dr").classList.remove("on")}
+const cartCount=()=>Object.values(S.cart).reduce((a,b)=>a+b,0);
+function draw(){
+ $("#lang").textContent=L==="ar"?"Français":"العربية";
+ $("#cartb").textContent=t("cart")+" ("+cartCount()+")";
+ $("#adm").hidden=!S.admin;$("#adm").textContent=S.view==="shop"?t("admin"):t("store");
+ $("#app").innerHTML=S.view==="admin"&&S.admin?adminHTML():shopHTML();
+ bind();
+}
+function shopHTML(){
+ const cats=[...new Set(S.prods.map(p=>p.cat).filter(Boolean))];
+ const list=S.prods.filter(p=>(!S.cat||p.cat===S.cat)&&(!S.q||(p.name||"").toLowerCase().includes(S.q.toLowerCase())));
+ return `${S.db?"":`<p class="sm">${t("offline")}</p>`}<div class="bar"><input id="q" placeholder="${t("search")}" value="${esc(S.q)}"><select id="cat"><option value="">${t("all")}</option>${cats.map(c=>`<option ${c===S.cat?"selected":""}>${esc(c)}</option>`).join("")}</select></div>
+ ${list.length?`<div class="grid">${list.map(p=>`<div class="p"><div class="im">${p.img?`<img src="${p.img}" alt="${esc(p.name)}">`:"📦"}${p.stock===false?`<span class="tag"><span>${t("out")}</span></span>`:""}</div><div class="t"><b>${esc(p.name)}</b><span class="sm">${esc(p.cat)}</span><span class="pr">${fmt(p.sell)}</span><button class="b" data-add="${p.id}" ${p.stock===false?"disabled":""}>${t("add")}</button></div></div>`).join("")}</div>`:`<p class="empty">${t("empty")}</p>`}`;
+}
+function adminHTML(){
+ if(!isUn())return loginHTML();
+ const tabs=["stats","orders","prods","exp"].map(k=>`<button class="nv ${S.tab===k?"on":""}" data-tab="${k}">${{prods:"📦",orders:"🧾",stats:"📊",exp:"💸"}[k]} ${t(k)}${k==="orders"&&S.orders.some(o=>o.status==="prep")?`<span class="bd">${S.orders.filter(o=>o.status==="prep").length}</span>`:""}</button>`).join("");
+ let body="";
+ if(S.tab==="prods")body=`<div class="card"><div class="f"><input id="pn" placeholder="${t("pn")}"><input id="pc" placeholder="${t("cat")}"><input id="pb" type="number" placeholder="${t("buy")}"><input id="pq" type="number" placeholder="${t("qty")}"><input id="ps" type="number" placeholder="${t("sell")}"><input id="pi" type="file" accept="image/*" aria-label="${t("img")}"></div><p><button class="b" id="psave">${t("save")}</button></p></div>
+ <div class="card"><div class="f"><input id="npw" type="password" placeholder="${t("newpw")}"><button class="b" id="cpw">${t("chpw")}</button></div></div>
+ <div class="card"><div class="f"><input id="wa" placeholder="${t("wa")}" value="${esc(S.wa)}"><button class="b" id="wasave">${t("wab")}</button></div></div>
+ ${S.prods.map(p=>`<div class="card row"><span>${p.img?`<img src="${p.img}" width="40" height="40" alt="" style="vertical-align:middle;object-fit:contain"> `:""}<b>${esc(p.name)}</b> <span class="sm">${fmt(p.buy)} → ${fmt(p.sell)} · ×${p.qty||0} · +${fmt((p.sell||0)-(p.buy||0))} ${p.stock===false?"· "+t("out"):""}</span></span><span><button class="b g" data-tg="${p.id}">${t("toggle")}</button> <button class="b r" data-del="${p.id}">${t("del")}</button></span></div>`).join("")}`;
+ if(S.tab==="orders")body=S.orders.length?S.orders.map(o=>`<div class="card"><div class="row"><b>${esc(o.name)}</b><span class="bd s-${o.status}">${T[L].st[o.status]||""}</span></div><div class="sm">📞 <a href="tel:${esc(o.phone)}">${esc(o.phone)}</a> · 📍 ${esc(o.wilaya)} · ${new Date(o.ts).toLocaleDateString(L==="ar"?"ar-DZ":"fr-DZ")}</div>${(o.items||[]).map(i=>{const p=S.prods.find(x=>x.id===i.id)||{};return `<div class="row" style="justify-content:flex-start">${p.img?`<img src="${p.img}" width="44" height="44" alt="" style="object-fit:contain">`:"📦"}<span>${esc(i.name)} × ${i.qty}</span></div>`}).join("")}<div class="row"><b>${fmt(o.total)}</b><select data-st="${o.id}">${Object.keys(T[L].st).map(k=>`<option value="${k}" ${o.status===k?"selected":""}>${T[L].st[k]}</option>`).join("")}</select></div><button class="b r" data-od="${o.id}">${t("del")}</button></div>`).join(""):`<p class="empty">${t("noord")}</p>`;
+ if(S.tab==="exp"){const by={};S.exp.forEach(e=>by[e.day]=(by[e.day]||0)+e.amount);body=`<div class="card"><div class="f"><input id="ea" type="number" placeholder="${t("amt")}"><input id="en" placeholder="${t("note")}"><input id="ed" type="date" value="${new Date().toISOString().slice(0,10)}"><button class="b" id="eadd">${t("addexp")}</button></div></div>${Object.keys(by).sort().reverse().map(d=>`<div class="card"><div class="row"><b>${d}</b><b>${fmt(by[d])}</b></div>${S.exp.filter(e=>e.day===d).map(e=>`<div class="row"><span>${esc(e.note)} · ${fmt(e.amount)}</span><button class="b r" data-xd="${e.id}">${t("del")}</button></div>`).join("")}</div>`).join("")}`}
+ if(S.tab==="stats"){const ok=S.orders.filter(o=>o.status==="done");const bought=S.prods.reduce((a,p)=>a+(p.buy||0)*(p.qty||0),0),ex=S.exp.reduce((a,e)=>a+e.amount,0);const days=[...Array(7)].map((_,i)=>{const d=new Date();d.setDate(d.getDate()-6+i);return d.toISOString().slice(0,10)});const dv=days.map(d=>ok.filter(o=>new Date(o.ts).toISOString().slice(0,10)===d).reduce((a,o)=>a+o.total,0));const mx=Math.max(1,...dv);const chart=`<div class="card"><b>${L==="ar"?"آخر 7 أيام":"7 derniers jours"}</b><div class="ch">${dv.map((v,i)=>`<div title="${fmt(v)}"><i style="height:${v/mx*100}%"></i><span>${days[i].slice(5)}</span></div>`).join("")}</div></div>`;const sold=ok.reduce((a,o)=>a+o.total,0),pf=ok.reduce((a,o)=>a+(o.profit||0),0);const cl={};ok.forEach(o=>{const c=cl[o.phone]=cl[o.phone]||{n:o.name,s:0};c.s+=o.total});
+ body=`<div class="st"><div><span class="sm">${t("sold")}</span><b>${fmt(sold)}</b></div><div><span class="sm">${t("profit")}</span><b>${fmt(pf)}</b></div><div><span class="sm">${t("cnt")}</span><b>${S.orders.length}</b></div><div><span class="sm">${t("bought")}</span><b>${fmt(bought)}</b></div><div><span class="sm">${t("exp")}</span><b>${fmt(ex)}</b></div><div><span class="sm">${t("net")}</span><b>${fmt(pf-ex)}</b></div></div>${chart}<div class="card"><b>${t("clients")}</b>${Object.entries(cl).sort((a,b)=>b[1].s-a[1].s).slice(0,10).map(([p,c])=>`<div class="row"><span>${esc(c.n)} <span class="sm">${esc(p)}</span></span><b>${fmt(c.s)}</b></div>`).join("")}</div>`}
+ return `<div class="ad"><nav class="side">${tabs}<button class="nv" id="lo" style="color:var(--bad)">⎋ ${t("lo")}</button></nav><section>${body}</section></div>`;
+}
+function bind(){
+ const q=$("#q");if(q)q.oninput=e=>{S.q=e.target.value;const p=e.target.selectionStart;draw();const n=$("#q");n.focus();n.setSelectionRange(p,p)};
+ const c=$("#cat");if(c)c.onchange=e=>{S.cat=e.target.value;draw()};
+ document.querySelectorAll("[data-add]").forEach(b=>b.onclick=()=>{S.cart[b.dataset.add]=(S.cart[b.dataset.add]||0)+1;draw()});
+ document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{S.tab=b.dataset.tab;draw()});
+ document.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>S.db.collection("products").doc(b.dataset.del).delete());
+ document.querySelectorAll("[data-tg]").forEach(b=>b.onclick=()=>{const p=S.prods.find(x=>x.id===b.dataset.tg);S.db.collection("products").doc(p.id).update({stock:p.stock===false})});
+ document.querySelectorAll("[data-st]").forEach(s=>s.onchange=()=>S.db.collection("status").doc(s.dataset.st).set({st:s.value,del:false}));
+ document.querySelectorAll("[data-od]").forEach(b=>b.onclick=()=>S.db.collection("status").doc(b.dataset.od).set({del:true}));
+ const ps=$("#psave");if(ps)ps.onclick=saveProd;
+ const lg=$("#lg");if(lg)lg.onclick=async()=>{const v=$("#lp").value;if(!v)return;const h=await H(v);if(!S.h){if(!S.db)return;await S.db.doc("settings/admin").set({h});S.h=h}else if(h!==S.h)return toast(t("bad"));try{localStorage.setItem("au",h)}catch(e){}draw()};
+ const lo=$("#lo");if(lo)lo.onclick=()=>{try{localStorage.removeItem("au")}catch(e){}S.view="shop";draw()};
+ const cpw=$("#cpw");if(cpw)cpw.onclick=async()=>{const v=$("#npw").value;if(!v)return;const h=await H(v);await S.db.doc("settings/admin").set({h});S.h=h;try{localStorage.setItem("au",h)}catch(e){}toast("✓");draw()};
+ const ea=$("#eadd");if(ea)ea.onclick=async()=>{const amount=+$("#ea").value;if(!amount)return toast(t("amt"));await S.db.collection("exp").add({amount,note:$("#en").value.trim(),day:$("#ed").value,ts:Date.now()})};
+ document.querySelectorAll("[data-xd]").forEach(b=>b.onclick=()=>S.db.collection("exp").doc(b.dataset.xd).delete());
+ const w=$("#wasave");if(w)w.onclick=async()=>{await S.db.doc("settings/shop").set({wa:$("#wa").value.replace(/\D/g,"")});toast("✓")};
+}
+function shrink(file){return new Promise(r=>{const i=new Image();i.onload=()=>{const m=480,k=Math.min(1,m/Math.max(i.width,i.height)),c=document.createElement("canvas");c.width=i.width*k;c.height=i.height*k;c.getContext("2d").drawImage(i,0,0,c.width,c.height);r(c.toDataURL("image/jpeg",.78))};i.onerror=()=>r("");i.src=URL.createObjectURL(file)})}
+async function saveProd(){
+ const name=$("#pn").value.trim(),sell=+$("#ps").value;if(!name||!sell)return toast(t("pn")+" / "+t("sell"));
+ const f=$("#pi").files[0],img=f?await shrink(f):"";
+ try{await S.db.collection("products").add({name,cat:$("#pc").value.trim(),buy:+$("#pb").value||0,qty:+$("#pq").value||0,sell,stock:true,img,ts:Date.now()});toast("✓")}catch(e){toast(e.message||"Error")}
+}
+function openCart(){
+ const ids=Object.keys(S.cart).filter(id=>S.prods.some(p=>p.id===id));
+ const tot=ids.reduce((a,id)=>a+S.prods.find(p=>p.id===id).sell*S.cart[id],0);
+ $("#sh").innerHTML=`<h2 style="margin:0">${t("cart")}</h2>${ids.length?ids.map(id=>{const p=S.prods.find(x=>x.id===id);return `<div class="row"><span>${p.img?`<img src="${p.img}" width="40" height="40" alt="" style="vertical-align:middle;object-fit:contain"> `:""}${esc(p.name)}<br><span class="sm">${fmt(p.sell)}</span></span><span class="q"><button data-m="${id}" aria-label="-">−</button>${S.cart[id]}<button data-p="${id}" aria-label="+">+</button><button data-r="${id}" aria-label="${t("rm")}">🗑</button></span></div>`}).join("")+`<div class="row"><b>${t("total")}</b><b>${fmt(tot)}</b></div><input id="cn" placeholder="${t("name")}"><input id="cp" type="tel" placeholder="${t("phone")}"><input id="cw" placeholder="${t("wil")}"><button class="b" id="co">${t("order")}</button>`:`<p class="empty">${t("cempty")}</p>`}<button class="b g" id="cc" style="color:var(--ink)">✕</button>`;
+ $("#dr").classList.add("on");
+ $("#cc").onclick=closeD;
+ document.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{const id=b.dataset.m;if(--S.cart[id]<=0)delete S.cart[id];draw();openCart()});
+ document.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{S.cart[b.dataset.p]++;draw();openCart()});
+ document.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>{delete S.cart[b.dataset.r];draw();openCart()});
+ const co=$("#co");if(co)co.onclick=async()=>{
+  const name=$("#cn").value.trim(),phone=$("#cp").value.trim(),wilaya=$("#cw").value.trim();
+  if(!name||!phone||!wilaya)return toast(t("need"));
+  const items=ids.map(id=>{const p=S.prods.find(x=>x.id===id);return{id,name:p.name,price:p.sell,cost:p.buy||0,qty:S.cart[id]}});
+  const profit=items.reduce((a,i)=>a+(i.price-i.cost)*i.qty,0);
+  try{if(S.db){let mine=[];try{mine=JSON.parse(localStorage.getItem("mine")||"[]")}catch(e){}mine.push({name,phone,wilaya,items,total:tot,profit,status:"prep",ts:Date.now()});try{localStorage.setItem("mine",JSON.stringify(mine))}catch(e){}await S.db.collection("inbox").doc(S.uid).set({orders:mine.slice(-30)})}}catch(e){return toast(e.message||"Error")}
+  const txt=encodeURIComponent(`SHOP DZ\n${name} · ${phone} · ${wilaya}\n`+items.map(i=>`${i.name} × ${i.qty}`).join("\n")+`\n${t("total")}: ${tot} ${t("da")}`);
+  S.cart={};draw();toast(t("ok"));
+  $("#sh").innerHTML=`<p class="empty">${t("ok")}</p>${S.wa?`<a class="b" style="text-align:center;text-decoration:none" target="_blank" rel="noopener" href="https://wa.me/${S.wa}?text=${txt}">${t("wsend")}</a>`:""}<button class="b g" id="cc" style="color:var(--ink)">✕</button>`;$("#cc").onclick=closeD;
+ };
+}
+async function init(){
+ draw();
+ try{
+  const u=await claude.use("user");S.admin=!!(u&&u.canEdit());S.uid=u?await u.id():"anon";
+  const db=await claude.use("db");if(!db){draw();return}
+  S.db=db;
+  db.collection("products").onSnapshot(s=>{S.prods=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.ts||0)-(a.ts||0));draw()},()=>{});
+  db.doc("settings/shop").onSnapshot(s=>{S.wa=(s.data()||{}).wa||"";},()=>{});
+  db.doc("settings/admin").onSnapshot(s=>{S.h=(s.data()||{}).h||"";if(S.view==="admin")draw()},()=>{});
+  if(S.admin)db.collection("exp").onSnapshot(s=>{S.exp=s.docs.map(d=>({id:d.id,...d.data()}));if(S.view==="admin")draw()},()=>{});
+  if(S.admin){let ib=[],stt={};const mix=()=>{S.orders=ib.flatMap(d=>(d.orders||[]).map(o=>({...o,id:d.id+"_"+o.ts,status:(stt[d.id+"_"+o.ts]||{}).st||o.status}))).filter(o=>!(stt[o.id]||{}).del).sort((a,b)=>b.ts-a.ts);if(S.view==="admin")draw()};
+   db.collection("inbox").onSnapshot(s=>{ib=s.docs.map(d=>({id:d.id,...d.data()}));mix()},()=>{});
+   db.collection("status").onSnapshot(s=>{stt={};s.docs.forEach(d=>stt[d.id]=d.data());mix()},()=>{})}
+  draw();
+ }catch(e){draw()}
+}
+setLang();init();
+</script>
+</body>
+</html>
